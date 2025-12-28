@@ -3,24 +3,35 @@ package com.banda.chatbot;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+import java.util.HashMap;
+import java.util.Map;
+
+@SpringBootApplication
 public class ChatbotApplication {
 
 	public static void main(String[] args) {
+		Map<String, Object> dotenvProperties = new HashMap<>();
 		try {
 			Dotenv dotenv = Dotenv.configure()
 					.ignoreIfMissing()
 					.load();
 			dotenv.entries().forEach(entry -> {
-				System.setProperty(entry.getKey(), entry.getValue());
+				dotenvProperties.put(entry.getKey(), entry.getValue());
 			});
 		} catch (Exception e) {
 			System.err.println("⚠️ Could not load .env file: " + e.getMessage());
 			e.printStackTrace();
 		}
-		SpringApplication.run(ChatbotApplication.class, args);
+
+		SpringApplication app = new SpringApplication(ChatbotApplication.class);
+		app.addInitializers(context -> {
+			ConfigurableEnvironment env = context.getEnvironment();
+			env.getPropertySources().addFirst(new MapPropertySource("dotenvProperties", dotenvProperties));
+		});
+		app.run(args);
 	}
 
 }

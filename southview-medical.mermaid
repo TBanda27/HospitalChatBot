@@ -1,0 +1,140 @@
+erDiagram
+    %% =========================================
+    %% SOUTHVIEW MEDICAL CENTRE - WHATSAPP BOT
+    %% Information Dissemination System (No Booking)
+    %% 8 Tables - Ultra Minimal Architecture
+    %% =========================================
+
+    %% Only ONE relationship in entire system!
+    FAQ_CATEGORY ||--o{ FAQ : contains
+
+    %% =========================================
+    %% FEATURE TABLES (7 tables)
+    %% =========================================
+
+    DOCTOR {
+        bigint id PK "Auto-increment"
+        varchar name "Dr. Ncube, Dr. Banda"
+        varchar specialization "GP, Obstetrician, Pediatrician"
+        varchar availability_schedule "Mon, Wed, Fri"
+        varchar consultation_hours "8:30 AM - 4:00 PM"
+        decimal consultation_fee "50.00, 60.00"
+        text specializes_in "Bullet list of specializations"
+        varchar average_wait_time "30-45 minutes"
+        int display_order "Menu position"
+        boolean is_available "Active/inactive status"
+    }
+
+    SERVICE_PRICING {
+        bigint id PK
+        varchar category "Consultations, Lab, Radiology, Maternity"
+        varchar service_name "X-Ray Chest, Blood Test CBC"
+        decimal price_min "Single price or range start"
+        decimal price_max "NULL for fixed price, value for ranges"
+        text description "Service details"
+        text what_included "What's covered in the price"
+        int display_order "Menu position"
+    }
+
+    PREPARATION_GUIDE {
+        bigint id PK
+        varchar guide_type "Maternity, Lab Tests, Radiology"
+        varchar guide_title "What to Bring for Delivery"
+        text items_to_bring "Checklist: ID, towels, baby clothes"
+        text preparation_instructions "Fasting, water intake, etc"
+        text important_notes "Warnings and tips"
+        int display_order "Menu position"
+    }
+
+    SERVICE_DEPARTMENT {
+        bigint id PK
+        varchar department_name "Pharmacy, Laboratory, Radiology"
+        text description "Department overview"
+        text services_offered "Bullet list of services"
+        varchar operating_hours "Mon-Fri: 8AM-5PM"
+        varchar direct_phone "+263 4 123 4570"
+        boolean requires_referral "TRUE for some departments"
+        text special_instructions "Additional info"
+        int display_order "Menu position"
+    }
+
+    HEALTH_CAMPAIGN {
+        bigint id PK
+        varchar campaign_name "Free HIV Testing Week"
+        text description "Campaign details"
+        date start_date
+        date end_date
+        boolean is_active "Auto-check against current date"
+        varchar target_group "Children under 5, Pregnant women"
+        text requirements "What to bring"
+        text location_details "Where held"
+        int display_order "Menu position"
+    }
+
+    FAQ_CATEGORY {
+        bigint id PK
+        varchar category_name UK "Payment, Visiting Hours, Services"
+        int display_order "Menu position"
+    }
+
+    FAQ {
+        bigint id PK
+        bigint category_id FK "Links to FAQ_CATEGORY"
+        text question "How do I get my lab results?"
+        text answer "Detailed answer"
+        int display_order "Within category"
+    }
+
+    %% =========================================
+    %% STATE & AUDIT TABLES (1 table)
+    %% =========================================
+
+    CONVERSATION_STATE {
+        varchar phone_number PK "WhatsApp number (no prefix)"
+        varchar current_step "Enum: MAIN_MENU, DOCTOR_LIST, etc"
+        text context_data "JSON: {doctor_id: 3, category: Lab}"
+        timestamp last_updated "Auto-updated on change"
+    }
+
+    CONVERSATION_AUDIT {
+        bigint id PK
+        varchar phone_number "User's WhatsApp number"
+        enum message_direction "INCOMING or OUTGOING"
+        text message_body "Actual message content"
+        varchar current_state "ConversationStep enum"
+        varchar handler_used "DoctorListHandler, etc"
+        int processing_time_ms "Performance tracking"
+        text error_message "NULL if successful"
+        timestamp created_at "Log timestamp"
+    }
+
+    %% =========================================
+    %% CONFIGURATION (NOT IN DATABASE!)
+    %% =========================================
+    %% The following are in application.yml:
+    %% - Hospital Info (name, address, hours, phone, email)
+    %% - Parking info & transport routes
+    %% - Emergency contact numbers (primary + ambulance)
+    %% - Payment methods (Cash USD/ZWL, EcoCash, OneMoney, Visa)
+    %% - Insurance providers (CIMAS, PSMAS, Premier, etc)
+    %% =========================================
+
+    %% =========================================
+    %% REMOVED FROM OLD ARCHITECTURE:
+    %% =========================================
+    %% ❌ HOSPITAL_INFO - moved to application.yml
+    %% ❌ PAYMENT_METHOD - moved to application.yml
+    %% ❌ INSURANCE_PROVIDER - moved to application.yml
+    %% ❌ PATIENT - no booking system
+    %% ❌ APPOINTMENT - no booking system
+    %% ❌ SERVICE - merged into SERVICE_PRICING
+    %% ❌ DOCTOR_SERVICE - no many-to-many needed
+    %% ❌ FACILITY - merged into SERVICE_DEPARTMENT
+    %% =========================================
+
+    %% KEY ARCHITECTURE DECISIONS:
+    %% 1. Only 1 foreign key relationship (FAQ → FAQ_CATEGORY)
+    %% 2. All tables are standalone = no complex joins
+    %% 3. Fast queries, simple implementation
+    %% 4. Perfect for 4-day MVP timeline
+    %% 5. No booking complexity = 90% of use cases covered

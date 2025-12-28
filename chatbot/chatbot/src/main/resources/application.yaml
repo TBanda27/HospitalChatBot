@@ -1,3 +1,84 @@
 spring:
   application:
-    name: chatbot
+    name: southview-chatbot
+
+
+hospital:
+  name: Southview Medical Center
+  address: 123 Health St, Southlea Park, SP 45678
+  main-phone: '+263-011-023-091'
+  email: southview@medical.co.zw
+
+  operating-hours: |
+    Monday-Friday: 8:00 AM - 6:00 PM
+    Saturday: 9:00 AM - 3:00 PM
+    Sunday: 8:00 AM - 12:00 PM
+
+  parking-info: 'FREE parking available on-site'
+
+  transport-routes: |
+    Kombi Route: CBD → Southlea Park from Rezende
+    Get off at OK Supermarket stop
+    Walk 2 minutes (we're next door)
+
+  google-maps-link: 'https://goo.gl/maps/placeholder'
+
+  emergency:
+    primary-line: '+263-011-023-092'
+    ambulance-line: '+263-011-023-093'
+    instructions: 'Call primary line for all emergencies. Ambulance will be dispatched if needed.'
+
+  payment-methods:
+    - code: CASH_USD
+      name: 'Cash (USD)'
+      active: true
+
+    - code: CASH_ZWL
+      name: 'Cash (ZWL)'
+      info: 'Current exchange rate applied'
+      active: true
+
+    - code: ECOCASH
+      name: EcoCash
+      info: 'Send to: 0771234567'
+      active: true
+
+    - code: ONEMONEY
+      name: OneMoney
+      info: 'Send to: 0783456789'
+      active: true
+
+    - code: VISA
+      name: Visa/Mastercard
+      info: 'Chip & PIN or contactless'
+      active: true
+
+    - code: SWIPE
+      name: 'Swipe (Local Cards)'
+      info: 'All major local banks accepted'
+      active: true
+
+  # Insurance Providers
+  insurance:
+    accepted:
+      - name: CIMAS
+        full-name: 'CIMAS Medical Aid Society'
+        notes: 'Comprehensive cover including chronic medication and maternity'
+        requirements: 'Valid CIMAS card + ID document'
+
+      - name: PSMAS
+        full-name: 'Premier Service Medical Aid Society'
+        notes: 'Government employee medical aid - check your benefit limits'
+        requirements: 'Valid PSMAS card + ID + referral (if required)'
+
+      - name: 'Premier Medical Aid'
+        full-name: 'Premier Medical Aid'
+        notes: 'Private medical aid with good hospital coverage'
+        requirements: 'Valid card + ID document'
+
+
+# Twilio WhatsApp Configuration
+twilio:
+  account-sid: ${ACCOUNT_SID}
+  auth-token: ${AUTH_TOKEN}
+  phone-number: ${TWILIO_NUMBER}

@@ -83,16 +83,11 @@ public class HospitalInfoHandler implements MessageHandler {
         info.append("Ambulance: ").append(hospitalConfig.getEmergency().getAmbulanceLine()).append("\n");
         info.append(hospitalConfig.getEmergency().getInstructions()).append("\n\n");
 
-        info.append("💳 *Payment Methods:*\n");
-        hospitalConfig.getPaymentMethods().forEach(payment ->
-            info.append("• ").append(payment.getName()).append("\n")
-        );
-        info.append("\n");
-
         info.append("🏥 *Accepted Insurance:*\n");
         hospitalConfig.getInsurance().getAccepted().forEach(provider ->
             info.append("• ").append(provider.getName()).append("\n")
         );
+
         return info.toString();
     }
 }

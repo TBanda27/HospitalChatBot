@@ -63,32 +63,26 @@ public class MainMenuHandler implements MessageHandler {
             Welcome! How can I help you today?
 
             1️⃣ Hospital Information
-            2️⃣ Our Doctors
+            2️⃣ Services & Procedures
             3️⃣ Price Information
-            4️⃣ Insurance Information
-            5️⃣ Test Preparation Guides
-            6️⃣ Services & Procedures
-            7️⃣ Health Campaigns
-            8️⃣ Lab Results Inquiry
-            9️⃣ Emergency Contact
-            🔟 Frequently Asked Questions
+            4️⃣ Test Preparation Guides
+            5️⃣ Health Campaigns
+            6️⃣ Lab Results Inquiry
+            7️⃣ Frequently Asked Questions
 
-            Reply with a number (1-10)
+            Reply with a number (1-7)
             """;
     }
 
     private ConversationStep getNextStepFromChoice(Integer choice) {
         return switch (choice) {
             case 1 -> ConversationStep.HOSPITAL_INFO;
-            case 2 -> ConversationStep.DOCTOR_LIST;
+            case 2 -> ConversationStep.SERVICE_LIST;
             case 3 -> ConversationStep.PRICE_CATEGORIES;
-            case 4 -> ConversationStep.INSURANCE_INFO;
-            case 5 -> ConversationStep.PREPARATION_CATEGORIES;
-            case 6 -> ConversationStep.SERVICE_LIST;
-            case 7 -> ConversationStep.CAMPAIGN_LIST;
-            case 8 -> ConversationStep.LAB_RESULTS_INQUIRY;
-            case 9 -> ConversationStep.EMERGENCY_CONTACT;
-            case 10 -> ConversationStep.FAQ_CATEGORIES;
+            case 4 -> ConversationStep.PREPARATION_CATEGORIES;
+            case 5 -> ConversationStep.CAMPAIGN_LIST;
+            case 6 -> ConversationStep.LAB_RESULTS_INQUIRY;
+            case 7 -> ConversationStep.FAQ_CATEGORIES;
             default -> ConversationStep.MAIN_MENU;
         };
     }

@@ -101,13 +101,13 @@ public class LabResultsInquiryHandler implements MessageHandler {
             if (labResult.getDateCompleted() != null) {
                 sb.append("*Completed:* ").append(labResult.getDateCompleted().format(formatter)).append("\n");
             }
-            sb.append("\n*Results:*\n");
-            if (labResult.getResult() != null && !labResult.getResult().isEmpty()) {
-                sb.append(labResult.getResult());
-            } else {
-                sb.append("Please collect your results at our laboratory.");
-            }
-            sb.append("\n\n_For detailed interpretation, please consult with your doctor._");
+            sb.append("\n✅ Your results are ready for collection!\n\n");
+            sb.append("Please visit our laboratory with:\n");
+            sb.append("• Your ID\n");
+            sb.append("• This reference number\n\n");
+            sb.append("*Opening Hours:*\n");
+            sb.append("Monday - Friday: 7:00 AM - 5:00 PM\n");
+            sb.append("Saturday: 8:00 AM - 1:00 PM");
 
         } else if ("PENDING".equalsIgnoreCase(labResult.getStatus())) {
             sb.append("*Status:* ⏳ Pending\n\n");

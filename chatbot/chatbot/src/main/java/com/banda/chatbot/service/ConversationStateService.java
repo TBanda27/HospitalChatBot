@@ -48,6 +48,14 @@ public class ConversationStateService {
         repository.save(state);
     }
 
+    @Transactional
+    public void resetToMainMenu(String phoneNumber) {
+        ConversationState state = getOrCreate(phoneNumber);
+        state.setCurrentStep(ConversationStep.MAIN_MENU);
+        state.setContextData("show_initial");
+        repository.save(state);
+    }
+
     private ConversationState createNewConversation(String phoneNumber) {
         ConversationState newState = ConversationState.builder()
             .phoneNumber(phoneNumber)

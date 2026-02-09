@@ -60,7 +60,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition: opacity 1.2s ease, transform 1.2s ease;
         }
 
         .reveal.visible {
@@ -68,9 +68,9 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
 
         /* ---- NAV ---- */
         nav {
@@ -464,6 +464,7 @@
 
         .tag-blue { background: #eff6ff; color: var(--blue); }
         .tag-purple { background: #f3f0ff; color: var(--purple); }
+        .tag-teal { background: #e6f7fc; color: #2AABEE; }
 
         .showcase-info h3 {
             font-size: 1.75rem;
@@ -821,6 +822,138 @@
             background: linear-gradient(180deg, #3a3a3a, #2a2a2a, #3a3a3a);
             border-radius: 2px 0 0 2px;
             box-shadow: 0 48px 0 #2a2a2a, 0 86px 0 #2a2a2a;
+        }
+
+        /* ---- Telegram theme ---- */
+        .tg-notch-area {
+            position: relative;
+            height: 54px;
+            background: #2AABEE;
+            flex-shrink: 0;
+        }
+
+        .tg-notch-area .phone-island { background: #000; }
+        .tg-notch-area .phone-status-time,
+        .tg-notch-area .phone-status-icons .signal-bars span,
+        .tg-notch-area .phone-status-icons .battery-fill { color: var(--white); background: var(--white); }
+        .tg-notch-area .phone-status-icons .wifi-icon::before,
+        .tg-notch-area .phone-status-icons .wifi-icon::after { border-color: var(--white); }
+        .tg-notch-area .phone-status-icons .wifi-icon span { background: var(--white); }
+
+        .tg-header {
+            background: #2AABEE;
+            color: white;
+            padding: 2px 12px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .tg-back { font-size: 0.85rem; opacity: 0.9; }
+
+        .tg-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #6EC6FF, #2AABEE);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .tg-header-info { flex: 1; }
+        .tg-header-name { font-size: 0.8rem; font-weight: 600; line-height: 1.2; }
+        .tg-header-status { font-size: 0.6rem; color: rgba(255,255,255,0.75); }
+
+        .tg-header-actions { display: flex; gap: 16px; opacity: 0.9; }
+        .tg-header-actions svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.85); }
+
+        .tg-chat {
+            flex: 1;
+            background-color: #e6ebee;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cdefs%3E%3Cstyle%3Etext%7Bfont-size:14px;fill:%23000000;fill-opacity:0.03;font-family:sans-serif%7D%3C/style%3E%3C/defs%3E%3Ctext x='10' y='20'%3E%E2%9C%88%3C/text%3E%3Ctext x='80' y='18'%3E%E2%AD%90%3C/text%3E%3Ctext x='140' y='25'%3E%F0%9F%92%AC%3C/text%3E%3Ctext x='40' y='52'%3E%F0%9F%94%94%3C/text%3E%3Ctext x='110' y='48'%3E%F0%9F%93%8E%3C/text%3E%3Ctext x='170' y='55'%3E%E2%9C%A8%3C/text%3E%3Ctext x='15' y='80'%3E%F0%9F%91%A4%3C/text%3E%3Ctext x='70' y='82'%3E%F0%9F%93%9D%3C/text%3E%3Ctext x='130' y='78'%3E%E2%9C%85%3C/text%3E%3Ctext x='30' y='115'%3E%E2%9C%88%3C/text%3E%3Ctext x='95' y='110'%3E%F0%9F%8E%AF%3C/text%3E%3Ctext x='155' y='115'%3E%F0%9F%92%AC%3C/text%3E%3Ctext x='5' y='145'%3E%E2%AD%90%3C/text%3E%3Ctext x='60' y='140'%3E%F0%9F%93%B1%3C/text%3E%3Ctext x='120' y='148'%3E%F0%9F%94%92%3C/text%3E%3Ctext x='175' y='142'%3E%E2%9C%A8%3C/text%3E%3Ctext x='25' y='175'%3E%F0%9F%91%A4%3C/text%3E%3Ctext x='85' y='178'%3E%F0%9F%94%94%3C/text%3E%3Ctext x='145' y='172'%3E%F0%9F%93%8E%3C/text%3E%3C/svg%3E");
+            padding: 14px 12px 10px;
+            overflow: hidden;
+        }
+
+        .tg-chat .bubble {
+            margin-bottom: 12px;
+            padding: 9px 11px;
+            font-size: 0.72rem;
+            line-height: 1.7;
+        }
+
+        .tg-chat .bubble.bot {
+            background: #ffffff;
+            color: #222;
+            border-top-left-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        }
+
+        .tg-chat .bubble.user {
+            background: #effdde;
+            color: #222;
+            margin-left: auto;
+            border-top-right-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        }
+
+        .tg-chat .bubble-time { color: rgba(0,0,0,0.35); }
+
+        .tg-chat .bubble.user .bubble-meta::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Cpath d='M1 5.5l3 3L10 2' stroke='%234fae4e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5 5.5l3 3L14 2' stroke='%234fae4e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        }
+
+        .tg-input {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
+            background: #e6ebee;
+            flex-shrink: 0;
+        }
+
+        .tg-input-field {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tg-input-field span { font-size: 0.65rem; color: rgba(0,0,0,0.35); }
+        .tg-input-emoji { font-size: 0.85rem; opacity: 0.5; }
+
+        .tg-input-send {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #2AABEE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .tg-input-send svg { width: 16px; height: 16px; fill: white; }
+
+        .tg-home {
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e6ebee;
+        }
+        .tg-home span {
+            width: 110px;
+            height: 4px;
+            background: rgba(0,0,0,0.12);
+            border-radius: 4px;
         }
 
         /* ---- FEATURES GRID ---- */
@@ -1273,13 +1406,13 @@
             <div class="section-header reveal">
                 <p class="section-label">Showcase</p>
                 <h2 class="section-title">Built for real businesses</h2>
-                <p class="section-sub">Two very different businesses, one shared outcome: customers served instantly, around the clock.</p>
+                <p class="section-sub">Different businesses, different platforms, one shared outcome: customers served instantly, around the clock.</p>
             </div>
 
             <!-- Southview Medical Centre -->
             <div class="showcase reveal">
                 <div class="showcase-info">
-                    <span class="showcase-tag tag-blue">Healthcare</span>
+                    <span class="showcase-tag tag-blue">Healthcare &middot; WhatsApp</span>
                     <h3>Southview Medical Centre</h3>
                     <p>A medical facility in Zimbabwe handling 200+ calls a day. I replaced the most repetitive ones with a WhatsApp bot patients can message anytime.</p>
                     <ul class="feature-list">
@@ -1360,10 +1493,10 @@
                 </div>
             </div>
 
-            <!-- Fade Factory Barbershop -->
+            <!-- Fade Factory Barbershop (WhatsApp) -->
             <div class="showcase reverse reveal">
                 <div class="showcase-info">
-                    <span class="showcase-tag tag-purple">Barbershop</span>
+                    <span class="showcase-tag tag-purple">Barbershop &middot; WhatsApp</span>
                     <h3>Fade Factory Barbershop</h3>
                     <p>An Irish barbershop losing customers to unanswered calls. I built a booking bot that fills chairs and an admin dashboard that tracks everything.</p>
                     <ul class="feature-list">
@@ -1440,6 +1573,82 @@
                                     </div>
                                 </div>
                                 <div class="phone-home"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kings Cut Barbershop (Telegram) -->
+            <div class="showcase reveal">
+                <div class="showcase-info">
+                    <span class="showcase-tag tag-teal">Barbershop &middot; Telegram</span>
+                    <h3>Kings Cut Barbershop</h3>
+                    <p>A Dublin barbershop that wanted a Telegram bot to handle bookings, loyalty rewards, and automated reminders &mdash; so the barbers never have to put down the clippers.</p>
+                    <ul class="feature-list">
+                        <li><span class="tick">&#10003;</span> Full booking flow: service, date, time &amp; confirmation</li>
+                        <li><span class="tick">&#10003;</span> Real-time 30-min slot availability (skips Sundays)</li>
+                        <li><span class="tick">&#10003;</span> Loyalty points &amp; milestone rewards</li>
+                        <li><span class="tick">&#10003;</span> Birthday bonuses &amp; automated reminders</li>
+                        <li><span class="tick">&#10003;</span> 25% deposit system with booking codes</li>
+                        <li><span class="tick">&#10003;</span> View &amp; cancel upcoming bookings</li>
+                    </ul>
+                </div>
+                <div class="showcase-phone">
+                    <div class="phone">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="phone-notch-area tg-notch-area">
+                                    <div class="phone-island"></div>
+                                    <div class="phone-status-time">11:30</div>
+                                    <div class="phone-status-icons">
+                                        <div class="signal-bars"><span></span><span></span><span></span><span></span></div>
+                                        <div class="wifi-icon"><span></span></div>
+                                        <div class="battery"><div class="battery-fill"></div></div>
+                                    </div>
+                                </div>
+                                <div class="tg-header">
+                                    <span class="tg-back">&lsaquo;</span>
+                                    <div class="tg-avatar">KC</div>
+                                    <div class="tg-header-info">
+                                        <div class="tg-header-name">Kings Cut Bot</div>
+                                        <div class="tg-header-status">bot</div>
+                                    </div>
+                                    <div class="tg-header-actions">
+                                        <svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"/></svg>
+                                    </div>
+                                </div>
+                                <div class="tg-chat">
+                                    <div class="bubble user">/start<div class="bubble-meta"><span class="bubble-time">11:30 AM</span></div></div>
+                                    <div class="bubble bot">
+                                        Welcome to Kings Cut! &#128135;<br><br>
+                                        &#9989; Book Appointment<br>
+                                        &#128203; My Bookings<br>
+                                        &#128136; Our Services<br>
+                                        &#127942; Loyalty Points
+                                        <div class="bubble-meta"><span class="bubble-time">11:30 AM</span></div>
+                                    </div>
+                                    <div class="bubble user">Book Appointment<div class="bubble-meta"><span class="bubble-time">11:31 AM</span></div></div>
+                                    <div class="bubble bot">
+                                        &#9989; <strong>Booked!</strong><br><br>
+                                        &#128135; Skin Fade &mdash; &euro;20<br>
+                                        &#128197; Mon 10 Feb &middot; 2:00 PM<br>
+                                        &#128176; Deposit: &euro;5.00<br>
+                                        &#127915; Code: <strong>BK4821</strong><br><br>
+                                        +10 loyalty pts &#127942;
+                                        <div class="bubble-meta"><span class="bubble-time">11:31 AM</span></div>
+                                    </div>
+                                </div>
+                                <div class="tg-input">
+                                    <div class="tg-input-field">
+                                        <span class="tg-input-emoji">&#128578;</span>
+                                        <span>Message</span>
+                                    </div>
+                                    <div class="tg-input-send">
+                                        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                                    </div>
+                                </div>
+                                <div class="tg-home"><span></span></div>
                             </div>
                         </div>
                     </div>
